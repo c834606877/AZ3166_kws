@@ -43,8 +43,6 @@ mico_semaphore_t  _wifiConnected_sem = NULL;
 
 
 
-
-
 extern "C" {          /*C++编译器才能支持，C编译器不支持*/
 
     void audio_thread( mico_thread_arg_t arg );
@@ -133,10 +131,7 @@ int main( void )
                                    STACK_SIZE_MQTT_CLIENT_THREAD, (mico_thread_arg_t)app_context );
     require_noerr_action( err, _exit, app_log("ERROR: Unable to start the Audio Record thread.") );
 
-    /* Audio Recognition */
-    err = mico_rtos_create_thread( NULL, MICO_APPLICATION_PRIORITY, "Audio Recognition Client", audio_recognition_thread,
-                                   STACK_SIZE_MQTT_CLIENT_THREAD, (mico_thread_arg_t)app_context );
-    require_noerr_action( err, _exit, app_log("ERROR: Unable to start the Audio Recognition thread.") );
+
 
     /* Sensor Update */
     err = mico_rtos_create_thread( NULL, MICO_APPLICATION_PRIORITY, "Sensor Update Client", sensor_update_thread,
@@ -149,7 +144,10 @@ int main( void )
 //    require_noerr_action( err, _exit, app_log("ERROR: Unable to start the Remote Tcp Client thread.") );
 //
 
-
+    /* Audio Recognition */
+    err = mico_rtos_create_thread( NULL, MICO_APPLICATION_PRIORITY, "Audio Recognition Client", audio_recognition_thread,
+                                   STACK_SIZE_MQTT_CLIENT_THREAD, (mico_thread_arg_t)app_context );
+    require_noerr_action( err, _exit, app_log("ERROR: Unable to start the Audio Recognition thread.") );
   return 0;
 
 }

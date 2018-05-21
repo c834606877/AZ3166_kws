@@ -10,6 +10,7 @@
 #include "AppDefine.h"
 
 #include "KWS/KWS_dnn/kws_dnn.h"
+#include "KWS/kws.h"
 #include "MFCC/mfcc.h"
 #include "NN/DNN/dnn.h"
 
@@ -17,26 +18,55 @@
 #define client_log_trace() custom_log_trace("Audio Recognition")
 
 
+extern "C"{
+    int16_t audio_buff[];
+    mico_semaphore_t  _recordComplated_sem;
+}
+
+
 void run_kws();
 
-KWS *kws = NULL;
+KWS_DNN *kws = NULL;
+int recording_win = 3;
+int averaging_window_len = 3;
+int detection_threshold = 90;
 
-void audio_recognition_thread(void *inContext)
+
+void audio_recognition_thread( mico_thread_arg_t arg )
 {
     client_log("Audio Recognition Thread Started£¡");
 
-    kws = new KWS(recording_win,averaging_window_len);
 
-    kws->start_kws();
+    kws = new KWS_DNN(audio_buff);
+
+    //kws->start_kws();
+    while (_recordComplated_sem == 0) mico_thread_sleep(1);
 
     while(1)
     {
-        mico_thread_sleep(10);
+        mico_rtos_get_semaphore(&_recordComplated_sem, 20000);
+        run_kws();
     }
 }
 
+
+char lcd_output_string[128];
+char output_class[12][9] = {"Silence",
+                            "Unknown",
+                            "stop",
+                            "wow",
+                            "six",
+                            "seven",
+                            "right",
+                            "happy",
+                            "house",
+                            "left",
+                            "right",
+                            "go"
+                        };
 void run_kws()
 {
+
   kws->extract_features();    //extract mfcc features
   kws->classify();        //classify using dnn
   kws->average_predictions();

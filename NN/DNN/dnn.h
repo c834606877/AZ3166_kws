@@ -21,8 +21,8 @@
 
 #include "../nn.h"
 #include "dnn_weights.h"
-#include "cmsis-nn/arm_nnfunctions.h"
-#include "cmsis-nn/arm_math.h"
+#include "arm_nnfunctions.h"
+#include "arm_math.h"
 
 /* Network Structure 
 

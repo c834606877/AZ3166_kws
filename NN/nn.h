@@ -19,7 +19,7 @@
 #ifndef __NN_H__
 #define __NN_H__
 
-#include "cmsis-nn/arm_nnfunctions.h"
+#include "arm_nnfunctions.h"
 
 class NN {
 

@@ -28,7 +28,7 @@
  *
  * -------------------------------------------------------------------- */
 
-#include "cmsis-nn/arm_math.h"
+#include "arm_math.h"
 #include "arm_nnfunctions.h"
 
 /**
