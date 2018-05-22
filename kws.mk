@@ -26,7 +26,6 @@ NAME := App_AZ3166_demo
 
 $(NAME)_SOURCES := AZ3166_main.cpp\
                    SensorUpdate.cpp\
-                   mqtt_client.c\
                    AudioRecord.c\
                    AudioRecognition.cpp\
                    NN/nn.cpp\

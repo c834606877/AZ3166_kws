@@ -19,15 +19,16 @@
 
 #include "kws_dnn.h"
 
-KWS_DNN::KWS_DNN(int record_win, int sliding_win_len)
+KWS_DNN::KWS_DNN(int16_t* audio_data_buffer, int record_win, int sliding_win_len)
 {
+  audio_buffer = audio_data_buffer;
   nn = new DNN();
   recording_win = record_win;
   sliding_window_len = sliding_win_len;
   init_kws();
 }
 
-KWS_DNN::KWS_DNN(int16_t* audio_data_buffer)
+KWS_DNN::KWS_DNN(int16_t* audio_data_buffer )
 {
   nn = new DNN();
   audio_buffer = audio_data_buffer;

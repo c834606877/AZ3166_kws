@@ -24,7 +24,7 @@
 
 class KWS_DNN : public KWS {
 public:
-  KWS_DNN(int recording_win, int sliding_window_len);
+  KWS_DNN(int16_t* audio_buffer, int recording_win, int sliding_window_len);
   KWS_DNN(int16_t* audio_buffer);
   ~KWS_DNN();
 };

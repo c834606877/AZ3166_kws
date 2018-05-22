@@ -14,8 +14,7 @@
 #define az3166_sensors_demo_log(M, ...) custom_log("AZ3166_SENSORS", M, ##__VA_ARGS__)
 
 
-#define AUDIO_BUFF_SIZE  3 * 640 //  4 * FRAME_LEN(40ms)
-#define BUFF_SIZE        2*AUDIO_BUFF_SIZE
+
 
 int16_t buf_tx_rx[2][BUFF_SIZE] = { 0 };//  channel(L/R) and in/out ;
 int16_t audio_buff[AUDIO_BUFF_SIZE] = {0};

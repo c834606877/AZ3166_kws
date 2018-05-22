@@ -122,9 +122,9 @@ int main( void )
 
 
     /* MQTT Client */
-    err = mico_rtos_create_thread( NULL, MICO_APPLICATION_PRIORITY, "MQTT Client", mqtt_client_thread,
-                                   STACK_SIZE_MQTT_CLIENT_THREAD, (mico_thread_arg_t)app_context );
-    require_noerr_action( err, _exit, app_log("ERROR: Unable to start the MQTT Client thread.") );
+//    err = mico_rtos_create_thread( NULL, MICO_APPLICATION_PRIORITY, "MQTT Client", mqtt_client_thread,
+//                                   STACK_SIZE_MQTT_CLIENT_THREAD, (mico_thread_arg_t)app_context );
+//    require_noerr_action( err, _exit, app_log("ERROR: Unable to start the MQTT Client thread.") );
 
     /* Audio Record */
     err = mico_rtos_create_thread( NULL, MICO_APPLICATION_PRIORITY, "Audio Record Client", audio_thread,
@@ -133,7 +133,7 @@ int main( void )
 
 
 
-    /* Sensor Update */
+    /* Sensor Update For init OLED and LED light */
     err = mico_rtos_create_thread( NULL, MICO_APPLICATION_PRIORITY, "Sensor Update Client", sensor_update_thread,
                                    STACK_SIZE_MQTT_CLIENT_THREAD, (mico_thread_arg_t)app_context );
     require_noerr_action( err, _exit, app_log("ERROR: Unable to start the Sensor Update thread.") );

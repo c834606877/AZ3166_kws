@@ -10,7 +10,8 @@
 #define STACK_SIZE_MQTT_CLIENT_THREAD  0x500
 
 
-
+#define AUDIO_BUFF_SIZE  3 * 640 //  4 * FRAME_LEN(40ms)
+#define BUFF_SIZE        2*AUDIO_BUFF_SIZE
 
 typedef struct {
     float hts221_humidity;
