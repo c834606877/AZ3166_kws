@@ -2,8 +2,9 @@
 #include "mico_common.h"
 
 
-#define CONFIGURATION_VERSION               0x00007
-#define DEAFULT_REMOTE_SERVER               "t.mypre.cn"
+#define CONFIGURATION_VERSION               0x00008
+
+#define DEAFULT_REMOTE_SERVER               "192.168.1.101"
 #define DEFAULT_REMOTE_SERVER_PORT          9997
 #define DEFAULT_AUDIO_VOL                   128
 

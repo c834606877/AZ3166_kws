@@ -46,7 +46,7 @@
 
 /************************************************************************
  * Enable wlan connection, start easylink configuration if no wlan settings are existed */
-#define MICO_WLAN_CONNECTION_ENABLE 1
+#define MICO_WLAN_CONNECTION_ENABLE 0
 
 #define MICO_WLAN_CONFIG_MODE CONFIG_MODE_EASYLINK_WITH_SOFTAP
 

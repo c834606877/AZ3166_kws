@@ -142,7 +142,7 @@ int main( void )
 //    err = mico_rtos_create_thread( NULL, MICO_APPLICATION_PRIORITY, "Remote Tcp Client", remoteTcpClient_thread,
 //                                   STACK_SIZE_MQTT_CLIENT_THREAD, (mico_thread_arg_t)app_context );
 //    require_noerr_action( err, _exit, app_log("ERROR: Unable to start the Remote Tcp Client thread.") );
-//
+
 
     /* Audio Recognition */
     err = mico_rtos_create_thread( NULL, MICO_APPLICATION_PRIORITY, "Audio Recognition Client", audio_recognition_thread,

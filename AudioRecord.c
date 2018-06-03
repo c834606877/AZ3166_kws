@@ -60,6 +60,7 @@ void audio_thread(void *inContext)
 
     app_context->appStatus.audio_vol = app_context->appConfig->audio_vol;
     last_vol = 128;
+    //app_context->appStatus.audio_vol  = 90;
 
 
     /*init audio*/
@@ -101,6 +102,7 @@ void BSP_AUDIO_IN_TransferComplete_CallBack( void )
             for(int i = 0; i< AUDIO_BUFF_SIZE; i++)
                   audio_buff[i] = buf_tx_rx[0][i<<1];
             MicoGpioOutputTrigger( LED_USER_PORT );
+            //az3166_sensors_demo_log("aaa");
             flag = 0;
         }
         mico_rtos_set_semaphore (_recordComplated_sem);
